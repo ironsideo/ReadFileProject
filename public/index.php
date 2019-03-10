@@ -8,7 +8,7 @@
 
 main::start();
 
-calss main {
+class main {
 
     static public function start() {
 
