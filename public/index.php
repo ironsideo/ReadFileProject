@@ -8,10 +8,11 @@
 
 
 // main::start("DataFile.csv");
-main::start("testdata.csv");
-//main::start("TechCrunchcontinentalUSA.csv");
+ini_set('auto_detect_line_endings', true);
+main::start("TechCrunchcontinentalUSA.csv");
+#main::start("testdata.csv");
 
-class main  {
+class main {
 
     static public function start($filename)
     {
@@ -29,11 +30,13 @@ class csv
         if($file = fopen( $filename, "r" ))
         {
             $header = fgetcsv( $file );			// Read First Line as Headers
+            #echo var_dump($header);
             $data = Array();						// Data array
             while (!feof( $file )) {
                 $record = fgetcsv( $file );
 
                 array_push( $data, $record );
+                #echo "<p>I am here!! </p>";
             }
             fclose( $file );
 
@@ -42,8 +45,10 @@ class csv
             // Complete the Html data
             $tableh = "<html> <div class='container'> " .$this::getHeader(). "<br/>" . $tableh . "</div></html>";
 
-        } else $tableh = "";
-
+        } else {
+            echo "<h1> Could not open the file</h1>";
+            $tableh = "";
+        }
         return $tableh;
     }
 
@@ -72,6 +77,7 @@ class csv
 
         // finish table and return it
         $html .= '</table>';
+        #echo var_dump($data);
         return $html;
     }
 
