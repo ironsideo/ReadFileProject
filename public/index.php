@@ -8,7 +8,8 @@
 
 
 // main::start("DataFile.csv");
-main::start("TechCrunchcontinentalUSA.csv");
+main::start("testdata.csv");
+//main::start("TechCrunchcontinentalUSA.csv");
 
 class main  {
 
